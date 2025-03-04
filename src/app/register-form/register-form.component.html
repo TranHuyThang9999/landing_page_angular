@@ -35,6 +35,7 @@
   <div class="form-group">
     <label>Avatar</label>
     <app-file-upload 
+    [maxFileCount]="1"
       (uploadComplete)="onFileUploadComplete($event)">
     </app-file-upload>
   </div>

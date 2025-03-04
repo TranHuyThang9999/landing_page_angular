@@ -30,6 +30,7 @@ const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
 export class FileUploadComponent {
   @Output() uploadComplete = new EventEmitter<string[]>();
   @Input() apiEndpoint: string = 'http://localhost:5227/api/minio/presigned-urls';
+  @Input() maxFileCount: number = 5;
 
   previewImage: string | undefined = '';
   previewVisible = false;

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { HomeComponent } from './home/home.component';
-import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 export const routes: Routes = [
     {
@@ -10,5 +10,5 @@ export const routes: Routes = [
     {
         path: 'register',component: RegisterFormComponent,
     },
-  
+
 ];

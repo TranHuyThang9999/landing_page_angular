@@ -1,8 +1,7 @@
-<form (ngSubmit)="registerUser()" class="p-4 border rounded shadow-lg bg-light">
-  <h3 class="text-center mb-4">Đăng ký</h3>
+<form (ngSubmit)="registerUser()" class="container p-4 border rounded shadow bg-light" style="max-width: 500px;">
+  <h3 class="text-center mb-4 fw-bold">Đăng ký</h3>
 
-  <div class="mb-3">
-    <label class="form-label fw-bold">Tên</label>
+  <div class="form-floating mb-3">
     <input 
       type="text" 
       class="form-control" 
@@ -11,10 +10,10 @@
       placeholder="Nhập tên của bạn"
       required
     >
+    <label>Tên</label>
   </div>
 
-  <div class="mb-3">
-    <label class="form-label fw-bold">Email</label>
+  <div class="form-floating mb-3">
     <input 
       type="email" 
       class="form-control" 
@@ -23,10 +22,10 @@
       placeholder="Nhập email của bạn"
       required
     >
+    <label>Email</label>
   </div>
 
-  <div class="mb-3">
-    <label class="form-label fw-bold">Mật khẩu</label>
+  <div class="form-floating mb-3">
     <input 
       type="password" 
       class="form-control" 
@@ -35,6 +34,7 @@
       placeholder="Nhập mật khẩu của bạn"
       required
     >
+    <label>Mật khẩu</label>
   </div>
 
   <div class="mb-3">
@@ -45,5 +45,5 @@
     </app-file-upload>
   </div>
 
-  <button type="submit" class="btn btn-primary w-100 shadow">Đăng ký</button>
+  <button type="submit" class="btn btn-primary w-100 shadow-sm rounded-pill">Đăng ký</button>
 </form>

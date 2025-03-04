@@ -24,6 +24,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 })
 export class RegisterFormComponent {
   @ViewChild(FileUploadComponent) fileUpload!: FileUploadComponent;
+  showPassword = false;
 
   user = {
     name: '',
@@ -75,4 +76,8 @@ export class RegisterFormComponent {
       this.user.AvatarUrl = urls[0];
     }
   }
+
+togglePasswordVisibility() {
+  this.showPassword = !this.showPassword;
+}
 }

@@ -1,0 +1,17 @@
+<nz-upload [nzHeaders]="{ authorization: 'authorization-text' }" (nzChange)="handleChange($event)" ngSkipHydration
+    nzListType="picture-card" [nzShowUploadList]="true" [nzBeforeUpload]="beforeUpload" nzName="avatar"
+    [nzPreview]="handlePreview">
+
+    <div>
+        <nz-icon nzType="plus" />
+        <div style="margin-top: 8px">Upload</div>
+    </div>
+
+    <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
+        (nzOnCancel)="previewVisible = false">
+        <ng-template #modalContent>
+            <img [src]="previewImage" style="width: 100%" />
+        </ng-template>
+    </nz-modal>
+
+</nz-upload>

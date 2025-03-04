@@ -1,44 +1,49 @@
-<form (ngSubmit)="registerUser()">
-  <div class="form-group">
-    <label>Name</label>
+<form (ngSubmit)="registerUser()" class="p-4 border rounded shadow-lg bg-light">
+  <h3 class="text-center mb-4">Register</h3>
+
+  <div class="mb-3">
+    <label class="form-label fw-bold">Name</label>
     <input 
       type="text" 
       class="form-control" 
       [(ngModel)]="user.name" 
       name="name" 
+      placeholder="Enter your name"
       required
     >
   </div>
 
-  <div class="form-group">
-    <label>Email</label>
+  <div class="mb-3">
+    <label class="form-label fw-bold">Email</label>
     <input 
       type="email" 
       class="form-control" 
       [(ngModel)]="user.email" 
       name="email" 
+      placeholder="Enter your email"
       required
     >
   </div>
 
-  <div class="form-group">
-    <label>Password</label>
+  <div class="mb-3">
+    <label class="form-label fw-bold">Password</label>
     <input 
       type="password" 
       class="form-control" 
       [(ngModel)]="user.password" 
       name="password" 
+      placeholder="Enter your password"
       required
     >
   </div>
 
-  <div class="form-group">
-    <label>Avatar</label>
+  <div class="mb-3">
+    <label class="form-label fw-bold">Avatar</label>
     <app-file-upload 
-    [maxFileCount]="1"
+      [maxFileCount]="1"
       (uploadComplete)="onFileUploadComplete($event)">
     </app-file-upload>
   </div>
 
-  <button type="submit" class="btn btn-primary">Register</button>
+  <button type="submit" class="btn btn-primary w-100 shadow">Register</button>
 </form>

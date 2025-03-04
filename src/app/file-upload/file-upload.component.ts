@@ -157,4 +157,8 @@ export class FileUploadComponent {
   getFileExtension(filename: string): string {
     return filename.split('.').pop() || '';
   }
+
+  onExceededMaxCount(files: NzUploadFile[]): void {
+    this.messageService.warning(`You can only upload up to ${this.maxFileCount} files`);
+  }
 }

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { environment } from '../../../environment';
-import { FileUploadComponent } from '../file-upload/file-upload.component'; // Adjust the import path
+import { FileUploadComponent } from '../components/file-upload/file-upload.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -12,7 +12,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
   selector: 'app-register-form',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
     FormsModule,
     FileUploadComponent,
     NzUploadModule,
@@ -43,7 +43,7 @@ export class RegisterFormComponent {
         if (uploadedUrls.length > 0) {
           this.user.AvatarUrl = uploadedUrls[0];
         }
-        
+
         // Proceed with registration
         this.submitRegistration();
       }).catch(error => {

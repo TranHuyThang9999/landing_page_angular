@@ -34,6 +34,12 @@ export class FetchApiInstanceService {
         }
 
         if (!response.ok) {
+
+            if (response.status === 401) {
+                localStorage.removeItem('token');
+                this.router.navigate(['/']);
+            }
+
             throw {
                 message: responseData.message || `HTTP Error! Status: ${response.status}`,
                 status: response.status,

@@ -1,24 +1,38 @@
 <header>
-    <nav class="z-n1 navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand text-warning" routerLink="/">
-                {{userProfile?.name}}
-                <img [src]="userProfile?.avatarUrl" alt="Avatar" class="rounded-circle" width="35">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Mở menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" routerLink="/about" routerLinkActive="active">Giới thiệu</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" routerLink="/contact" routerLinkActive="active">Liên hệ</a>
-                    </li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
+      <div class="container">
+        <a class="navbar-brand text-warning fw-bold" routerLink="/">
+          <span *ngIf="userProfile; else brandName">{{ userProfile?.name }}</span>
+          <ng-template #brandName>Website</ng-template>
+          <img *ngIf="userProfile?.avatarUrl" [src]="userProfile?.avatarUrl" alt="Avatar" class="rounded-circle ms-2" width="35">
+        </a>
+  
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Mở menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/about" routerLinkActive="active">Giới thiệu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/contact" routerLinkActive="active">Liên hệ</a>
+            </li>
+          </ul>
+  
+          <div class="ms-lg-3">
+            <ng-container *ngIf="userProfile; else loggedOut">
+              <button class="btn btn-outline-light" (click)="logout()">Đăng xuất</button>
+            </ng-container>
+            <ng-template #loggedOut>
+              <a class="btn btn-light me-2" routerLink="/login">Đăng nhập</a>
+              <a class="btn btn-warning" routerLink="/register">Đăng ký</a>
+            </ng-template>
+          </div>
         </div>
+      </div>
     </nav>
-</header>
+  </header>
+  

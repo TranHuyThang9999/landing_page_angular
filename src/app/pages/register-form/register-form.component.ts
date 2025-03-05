@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -36,23 +36,25 @@ export class RegisterFormComponent {
 
   constructor(private http: HttpClient) { }
 
-  registerUser() {
-    // If there are uploaded files, get their URLs first
+  registerUser(form: NgForm) {
+    // Kiểm tra form hợp lệ trước khi gọi API
+    if (form.invalid) {
+      alert('Vui lòng điền đầy đủ thông tin!');
+      return;
+    }
+
+    // Nếu có file được chọn, tải file lên trước
     if (this.fileUpload && this.fileUpload.selectedFiles.length > 0) {
       this.fileUpload.uploadFiles().then(uploadedUrls => {
-        // Use the first uploaded URL as the avatar
         if (uploadedUrls.length > 0) {
           this.user.AvatarUrl = uploadedUrls[0];
         }
-
-        // Proceed with registration
         this.submitRegistration();
       }).catch(error => {
         console.error('File upload failed', error);
         alert('Lỗi tải file!');
       });
     } else {
-      // If no files, proceed with registration directly
       this.submitRegistration();
     }
   }
@@ -65,7 +67,6 @@ export class RegisterFormComponent {
           alert('Đăng ký thành công!');
         },
         error: (error) => {
-          console.error('Lỗi khi đăng ký:', error);
           alert('Đăng ký thất bại!');
         }
       });

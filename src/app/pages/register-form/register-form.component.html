@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-center align-items-center mt-5">
-  <form (ngSubmit)="registerUser()" class="p-4 border rounded shadow bg-light" style="width: 400px;">
+  <form  #registerForm="ngForm"   (ngSubmit)="registerUser(registerForm)" class="p-4 border rounded shadow bg-light" style="width: 400px;">
     <h3 class="text-center mb-4 fw-bold">Đăng ký</h3>
 
     <div class="form-floating mb-3">
@@ -13,6 +13,8 @@
         required
       >
       <label for="name">Tên</label>
+      <div *ngIf="registerForm.submitted && !user.name" class="text-danger small">Vui lòng nhập tên!</div>
+
     </div>
 
     <div class="form-floating mb-3">
@@ -39,7 +41,8 @@
         required
       >
       <label for="password">Mật khẩu</label>
-      
+      <div *ngIf="registerForm.submitted && !user.password" class="text-danger small">Vui lòng nhập mật khẩu!</div>
+
       <button 
         type="button" 
         class="btn position-absolute top-50 end-0 translate-middle-y me-3 border-0 bg-transparent"

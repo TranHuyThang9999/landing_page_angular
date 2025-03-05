@@ -1,13 +1,43 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FetchApiInstanceService } from '../../utils/fetch_api.service';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [
+    FormsModule,
+  ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-    constructor(private http: HttpClient) { }
-    
+  userName: string = '';
+  password: string = '';
+  errorMessage: string = '';
+
+  constructor(
+    private apiService: FetchApiInstanceService,
+    private router: Router,
+  ) { }
+
+  async login(event: Event) {
+    event.preventDefault();
+    try {
+      const response = await this.apiService.post<{ data: string, message: string, statusCode: number }>('user/login', {
+        userName: this.userName,
+        password: this.password
+      });
+
+      if (response.statusCode === 200) {
+        localStorage.setItem('token', response.data);
+        this.router.navigate(['/profile']);
+      } else {
+        this.errorMessage = response.message || 'Đăng nhập thất bại';
+      }
+    } catch (error: any) {
+      console.error('Lỗi đăng nhập:', error);
+      this.errorMessage = error.message || 'Đăng nhập thất bại';
+    }
+  }
 }

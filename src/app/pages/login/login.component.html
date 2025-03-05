@@ -1,13 +1,20 @@
 <div class="container d-flex justify-content-center align-items-center mt-5">
-    <div class="card shadow" style="max-width: 370px; width: 100%;height: 400px;">      <div class="card-body p-4">
+    <div class="card shadow" style="max-width: 370px; width: 100%; height: 400px;">
+      <div class="card-body p-4">
         <h3 class="card-title text-center mb-4 fw-bold">Đăng nhập</h3>
-        <form>
+  
+        <div *ngIf="errorMessage" class="alert alert-danger text-center">
+          {{ errorMessage }}
+        </div>
+        <form (submit)="login($event)">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="username" placeholder="Nhập tài khoản của bạn" aria-describedby="basic-addon1" required>
+            <input type="text" class="form-control" id="username" placeholder="Nhập tài khoản của bạn" 
+              [(ngModel)]="userName" name="username" required>
             <label for="username">Tài khoản</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu của bạn" required>
+            <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu của bạn" 
+              [(ngModel)]="password" name="password" required>
             <label for="password">Mật khẩu</label>
           </div>
           <div class="d-grid mb-3">

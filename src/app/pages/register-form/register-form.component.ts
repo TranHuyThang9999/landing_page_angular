@@ -37,13 +37,11 @@ export class RegisterFormComponent {
   constructor(private http: HttpClient) { }
 
   registerUser(form: NgForm) {
-    // Kiểm tra form hợp lệ trước khi gọi API
     if (form.invalid) {
       alert('Vui lòng điền đầy đủ thông tin!');
       return;
     }
 
-    // Nếu có file được chọn, tải file lên trước
     if (this.fileUpload && this.fileUpload.selectedFiles.length > 0) {
       this.fileUpload.uploadFiles().then(uploadedUrls => {
         if (uploadedUrls.length > 0) {
@@ -72,7 +70,6 @@ export class RegisterFormComponent {
       });
   }
 
-  // Optional: Handle file upload complete event
   onFileUploadComplete(urls: string[]) {
     if (urls.length > 0) {
       this.user.AvatarUrl = urls[0];

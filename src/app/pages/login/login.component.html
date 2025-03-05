@@ -3,7 +3,7 @@
       <div class="card-body p-4">
         <h3 class="card-title text-center mb-4 fw-bold">Đăng nhập</h3>
   
-        <div *ngIf="errorMessage" class="alert alert-danger text-center">
+        <div *ngIf="errorMessage" class="alert alert-danger text-center p-2 fs-6">
           {{ errorMessage }}
         </div>
         <form (ngSubmit)="login($event)">

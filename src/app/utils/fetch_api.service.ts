@@ -25,19 +25,34 @@ export class FetchApiInstanceService {
     }
 
     private async handleResponse<T>(response: Response): Promise<T> {
-        if (response.status === 401) {
-            localStorage.removeItem('token');
-            setTimeout(() => this.router.navigate(['/home']), 0);
-            throw new Error('Unauthorized! Redirecting to home.');
+        let responseData: any = {};
+    
+        try {
+            responseData = await response.json();
+        } catch (e) {
+            console.error("Lỗi khi parse JSON từ API:", e);
         }
     
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw {
+                message: responseData.message || `HTTP Error! Status: ${response.status}`,
+                status: response.status,
+                data: responseData
+            };
         }
     
-        return await response.json();
+        if (responseData.code && responseData.code !== 0) {
+            throw {
+                message: responseData.message || `API Error! Code: ${responseData.code}`,
+                status: responseData.code,
+                data: responseData
+            };
+        }
+    
+        return responseData;
     }
     
+
 
     async get<T>(endpoint: string): Promise<T> {
         const response = await fetch(`${this.baseUrl}/${endpoint}`, {

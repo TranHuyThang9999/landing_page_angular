@@ -23,7 +23,6 @@ export class LoginComponent {
 
   constructor(
     private apiService: FetchApiInstanceService,
-    private messageService: NzMessageService,
     private router: Router,
   ) { }
 

@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { FetchApiInstanceService } from '../../utils/fetch_api.service';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   imports: [
-    FormsModule,
+    CommonModule,
+    FormsModule
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']

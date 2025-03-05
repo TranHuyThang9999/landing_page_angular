@@ -6,7 +6,7 @@
         <div *ngIf="errorMessage" class="alert alert-danger text-center">
           {{ errorMessage }}
         </div>
-        <form (submit)="login($event)">
+        <form (ngSubmit)="login($event)">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="username" placeholder="Nhập tài khoản của bạn" 
               [(ngModel)]="userName" name="username" required>

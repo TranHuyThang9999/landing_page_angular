@@ -14,22 +14,20 @@ import { NzMessageService } from 'ng-zorro-antd/message';
     ],
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
-    providers: [NzMessageService]
 })
 export class LoginComponent {
     userName: string = '';
     password: string = '';
-    errorMessage: string = '';
 
     constructor(
         private apiService: FetchApiInstanceService,
+        private message: NzMessageService,
         private router: Router,
     ) { }
 
 
     async login(event: Event) {
         event.preventDefault();
-        this.errorMessage = '';
 
         try {
             const response = await this.apiService.post<{ data: string, message: string, code: number }>('user/login', {
@@ -39,17 +37,17 @@ export class LoginComponent {
 
             if (response.code === 0) {
                 localStorage.setItem('token', response.data);
+                this.message.success("Đăng nhập thành công!");
                 this.router.navigate(['/profile']);
             }
         } catch (error: any) {
             const code = error.data?.code ?? error.code;
 
             if (code === 4) {
-                this.errorMessage = "Tài khoản hoặc mật khẩu không đúng. Vui lòng thử lại.";
+                this.message.info("Tài khoản hoặc mật khẩu không đúng. Vui lòng thử lại.");
             }
             else {
-
-                this.errorMessage = error.message || "Đăng nhập thất bại.";
+                this.message.error("lỗi hệ thống vui lòng thử lại");
             }
         }
     }

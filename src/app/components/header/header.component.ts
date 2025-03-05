@@ -30,8 +30,8 @@ export class HeaderComponent implements OnInit {
   }
 
   goToProfile() {
-    if (this.router.url !== '/profile') {
-      this.router.navigate(['/profile']);
+    if (this.router.url !== '/dashboard') {
+      this.router.navigate(['/dashboard']);
     }
   }
 }

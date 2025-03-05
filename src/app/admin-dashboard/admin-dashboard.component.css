@@ -1,0 +1,33 @@
+nz-layout {
+    min-height: 100vh;
+  }
+  
+  nz-content {
+    display: flex;
+    flex-grow: 1;
+  }
+  
+  .container-fluid {
+    display: flex;
+    height: calc(100vh - 60px);
+  }
+  
+  .row {
+    flex-grow: 1;
+    display: flex;
+  }
+  
+  .col-md-3 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .col-md-9 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  nz-tabset {
+    flex-grow: 1;
+  }
+  

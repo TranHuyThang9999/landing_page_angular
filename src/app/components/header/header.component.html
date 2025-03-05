@@ -8,12 +8,14 @@
             Website
           }
           @if (userProfile?.avatarUrl) {
-            <img [src]="userProfile?.avatarUrl" alt="Avatar" class="rounded-circle ms-2" width="35">
+            <img [src]="userProfile?.avatarUrl" alt="Avatar"
+                 class="rounded-circle ms-2" width="35"
+                 (click)="goToProfile()" style="cursor: pointer;"> <!-- 👈 Thêm sự kiện click -->
           }
         </a>
   
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Mở menu">
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Mở menu">
           <span class="navbar-toggler-icon"></span>
         </button>
   

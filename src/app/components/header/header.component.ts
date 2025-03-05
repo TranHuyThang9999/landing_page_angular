@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { UserProfile } from '../models/ user-profile.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,8 @@ import { UserProfile } from '../models/ user-profile.model';
 })
 export class HeaderComponent implements OnInit {
   userProfile: UserProfile | null = null;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
     const storedUser = localStorage.getItem('userProfile');
@@ -24,5 +27,11 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('token');
     this.userProfile = null;
     window.location.href = '/login';
+  }
+
+  goToProfile() {
+    if (this.router.url !== '/profile') {
+      this.router.navigate(['/profile']);
+    }
   }
 }

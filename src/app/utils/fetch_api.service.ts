@@ -59,37 +59,60 @@ export class FetchApiInstanceService {
     }
 
 
+
     async get<T>(endpoint: string): Promise<T> {
-        const response = await fetch(`${this.baseUrl}/${endpoint}`, {
+        return this.fetchWithTimeout<T>(`${this.baseUrl}/${endpoint}`, {
             method: 'GET',
             headers: this.getHeaders()
         });
-        return this.handleResponse<T>(response);
     }
 
     async post<T>(endpoint: string, data: any): Promise<T> {
-        const response = await fetch(`${this.baseUrl}/${endpoint}`, {
+        return this.fetchWithTimeout<T>(`${this.baseUrl}/${endpoint}`, {
             method: 'POST',
             headers: this.getHeaders(),
             body: JSON.stringify(data)
         });
-        return this.handleResponse<T>(response);
     }
 
     async put<T>(endpoint: string, data: any): Promise<T> {
-        const response = await fetch(`${this.baseUrl}/${endpoint}`, {
+        return this.fetchWithTimeout<T>(`${this.baseUrl}/${endpoint}`, {
             method: 'PUT',
             headers: this.getHeaders(),
             body: JSON.stringify(data)
         });
-        return this.handleResponse<T>(response);
     }
 
+    async patch<T>(endpoint: string, data: any): Promise<T> {
+        return this.fetchWithTimeout<T>(`${this.baseUrl}/${endpoint}`, {
+            method: 'PATCH',
+            headers: this.getHeaders(),
+            body: JSON.stringify(data)
+        });
+    }
+
+
     async delete<T>(endpoint: string): Promise<T> {
-        const response = await fetch(`${this.baseUrl}/${endpoint}`, {
+        return this.fetchWithTimeout<T>(`${this.baseUrl}/${endpoint}`, {
             method: 'DELETE',
             headers: this.getHeaders()
         });
-        return this.handleResponse<T>(response);
+    }
+
+    async fetchWithTimeout<T>(url: string, options: RequestInit, timeout: number = 10000): Promise<T> {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+        try {
+            const response = await fetch(url, { ...options, signal: controller.signal });
+            return this.handleResponse<T>(response);
+        } catch (error: any) {
+            if (error.name === 'AbortError') {
+                throw new Error('Request timeout! Máy chủ không phản hồi.');
+            }
+            throw error;
+        } finally {
+            clearTimeout(timeoutId);
+        }
     }
 }

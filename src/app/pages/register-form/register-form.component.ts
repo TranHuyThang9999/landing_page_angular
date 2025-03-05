@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { environment } from '../../../environment';
-import { FileUploadComponent } from '../components/file-upload/file-upload.component';
+
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { FileUploadComponent } from '../../components/file-upload/file-upload.component';
+import { environment } from '../../../../environment';
 
 @Component({
   selector: 'app-register-form',

@@ -26,18 +26,18 @@ export class FetchApiInstanceService {
 
     private async handleResponse<T>(response: Response): Promise<T> {
         if (response.status === 401) {
-            // Xóa token và điều hướng về trang chủ
             localStorage.removeItem('token');
-            this.router.navigate(['/home']);
+            setTimeout(() => this.router.navigate(['/home']), 0);
             throw new Error('Unauthorized! Redirecting to home.');
         }
-
+    
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-
+    
         return await response.json();
     }
+    
 
     async get<T>(endpoint: string): Promise<T> {
         const response = await fetch(`${this.baseUrl}/${endpoint}`, {

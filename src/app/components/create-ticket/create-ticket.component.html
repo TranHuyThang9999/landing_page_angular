@@ -1,0 +1,19 @@
+<form #form="ngForm" (ngSubmit)="createTicket(form)">
+    <div class="mb-3">
+      <label class="form-label fw-bold">Ảnh đại diện</label>
+      <app-file-upload 
+        [maxFileCount]="2"
+        (uploadComplete)="onFileUploadComplete($event)">
+      </app-file-upload>
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label fw-bold">Tên Ticket</label>
+      <input type="text" class="form-control" [(ngModel)]="ticket.name" name="name" required>
+    </div>
+  
+    <button type="submit" class="btn btn-primary w-100 shadow-sm rounded-pill">
+      Tạo ticket
+    </button>
+  </form>
+  

@@ -55,6 +55,7 @@ export class RegisterFormComponent {
     } else {
       this.submitRegistration();
     }
+    
   }
 
   private submitRegistration() {
@@ -76,7 +77,7 @@ export class RegisterFormComponent {
     }
   }
 
-togglePasswordVisibility() {
-  this.showPassword = !this.showPassword;
-}
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
 }

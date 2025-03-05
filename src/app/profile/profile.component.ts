@@ -2,20 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FetchApiInstanceService } from '../utils/fetch_api.service';
-
-interface UserProfile {
-  id: number;
-  name: string;
-  email: string;
-  avatarUrl: string;
-}
-
-interface ResponseData {
-  code: number;
-  message: string;
-  data: UserProfile;
-}
-
+import { ResponseData, UserProfile } from '../components/models/ user-profile.model';
 
 @Component({
   selector: 'app-profile',
@@ -43,6 +30,7 @@ export class ProfileComponent implements OnInit{
       const response: ResponseData = await this.apiService.get('user/profile');
       if (response.code === 0) {
         this.userProfile = response.data;
+        localStorage.setItem('userProfile', JSON.stringify(this.userProfile));
       }
     } catch (error) {
       console.error("Lỗi khi lấy dữ liệu người dùng:", error);

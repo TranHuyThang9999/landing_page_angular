@@ -1,7 +1,10 @@
 <header>
     <nav class="z-n1 navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand text-warning" routerLink="/">Logo</a>
+            <a class="navbar-brand text-warning" routerLink="/">
+                {{userProfile?.name}}
+                <img [src]="userProfile?.avatarUrl" alt="Avatar" class="rounded-circle" width="35">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Mở menu">
                 <span class="navbar-toggler-icon"></span>

@@ -26,13 +26,13 @@ export class FetchApiInstanceService {
 
     private async handleResponse<T>(response: Response): Promise<T> {
         let responseData: any = {};
-    
+
         try {
             responseData = await response.json();
         } catch (e) {
-            console.error("Lỗi khi parse JSON từ API:", e);
+            // console.error("Error parsing response:", e);
         }
-    
+
         if (!response.ok) {
             throw {
                 message: responseData.message || `HTTP Error! Status: ${response.status}`,
@@ -40,18 +40,17 @@ export class FetchApiInstanceService {
                 data: responseData
             };
         }
-    
-        if (responseData.code && responseData.code !== 0) {
+
+        if (responseData.code !== 0) {
             throw {
                 message: responseData.message || `API Error! Code: ${responseData.code}`,
                 status: responseData.code,
                 data: responseData
             };
         }
-    
+
         return responseData;
     }
-    
 
 
     async get<T>(endpoint: string): Promise<T> {

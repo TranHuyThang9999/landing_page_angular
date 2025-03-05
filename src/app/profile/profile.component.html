@@ -1,1 +1,15 @@
-<p>profile works!</p>
+<div class="container">
+    
+    <div *ngIf="userProfile; else loading">
+      <div class="card shadow p-3">
+        <img [src]="userProfile.avatarUrl" alt="Avatar" class="rounded-circle mb-3" width="100">
+        <h4>{{ userProfile.name }}</h4>
+        <p>Email: {{ userProfile.email }}</p>
+      </div>
+    </div>
+  
+    <ng-template #loading>
+      <p>Đang tải dữ liệu...</p>
+    </ng-template>
+  </div>
+  

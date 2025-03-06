@@ -8,6 +8,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { CreateTicketComponent } from "../create-ticket/create-ticket.component";
 import { UserListComponent } from "../../user-list/user-list.component";
 import { Ticket } from '../models/ticket';
+import { TicketService } from '../../services/ticket.service';
 
 
 @Component({
@@ -25,31 +26,26 @@ import { Ticket } from '../models/ticket';
   templateUrl: './ticket-list.component.html',
   styleUrls: ['./ticket-list.component.css']
 })
-export class TicketListComponent implements OnInit {
+export class TicketListComponent implements OnInit {  
   tickets: Ticket[] = [];
   displayedTickets: Ticket[] = [];
   
   currentPage = 1;
   pageSize = 10;
   
-  constructor(private apiService: FetchApiInstanceService) { }
+  constructor(
+    private ticketService : TicketService,
+  ) { }
   
   ngOnInit(): void {
     this.loadTickets();
   }
   
-  async loadTickets() {
-    try {
-      const response = await this.apiService.get<{ code: number; message: string; data: Ticket[] }>('ticket/tickets');
-      if (response.code === 0) {
-        this.tickets = response.data;
-        this.updateDisplayedTickets();
-      } else {
-        console.error('Failed to load tickets. Server response:', response);
-      }
-    } catch (error) {
-      console.error("Lỗi khi tải danh sách ticket:", error);
-    }
+   loadTickets() {
+    this.ticketService.getTickets().then(ticket => {
+      this.tickets = ticket;
+    }).catch(err => console.error("Lỗi khi lấy danh sách người dùng:", err));
+  
   }
   
   onTicketCreated() {

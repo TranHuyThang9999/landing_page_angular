@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FetchApiInstanceService } from '../utils/fetch_api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ResponseListUser, UserProfile } from '../components/models/ user-profile.model';
+import { UserProfile } from '../components/models/ user-profile.model';
 import { UsersService } from '../services/users.service';
 
 @Component({
@@ -20,14 +20,15 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private apiService: FetchApiInstanceService,
   ) { }
 
 
   ngOnInit(): void {
+
     this.usersService.getUsers().then(users => {
       this.users = users;
     }).catch(err => console.error("Lỗi khi lấy danh sách người dùng:", err));
+
   }
 
 

@@ -1,0 +1,17 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Ảnh mô tả</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td>{{ ticket.id }}</td>
+        <td>{{ ticket.name }}</td> <!-- Đổi name thành title -->
+        <td><img [src]="ticket.fileDescription" width="100"></td> <!-- Đổi fileDescription thành description -->
+      </tr>
+    </tbody>
+  </table>
+  

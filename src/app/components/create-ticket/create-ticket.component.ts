@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { FileUploadComponent } from '../file-upload/file-upload.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
@@ -26,6 +26,8 @@ export class CreateTicketComponent {
     name: '',
     fileDescription: ''
   };
+
+  @Output() ticketCreated = new EventEmitter<any>(); 
 
   @ViewChild(FileUploadComponent) fileUpload!: FileUploadComponent;
 
@@ -61,6 +63,7 @@ export class CreateTicketComponent {
       });
 
       if (response.code === 0) {
+        this.ticketCreated.emit(response.data);
         alert('Tạo ticket thành công!');
       } else {
         alert(response.message || 'Có lỗi xảy ra!');

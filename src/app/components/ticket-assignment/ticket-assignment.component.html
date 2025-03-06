@@ -1,0 +1,19 @@
+<table class="table table-striped">
+    <thead class="table-striped">
+      <tr>
+        <th>ID</th>
+        <th>Ảnh đại diện</th>
+        <th>Tên</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td><img [src]="user.avatarUrl" class="rounded-circle" width="50" height="50"></td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

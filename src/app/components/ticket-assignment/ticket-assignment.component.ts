@@ -28,7 +28,7 @@ export class TicketAssignmentComponent implements OnInit {
     private usersService: UsersService,
     private ticketService: TicketService,
     private apiService: FetchApiInstanceService,
-    private message: NzMessageService // Inject message service vào đây
+    private message: NzMessageService
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class TicketAssignmentComponent implements OnInit {
 
     this.ticketService.getTickets().then(tickets => {
       this.tickets = tickets;
-    }).catch(err => this.message.error("Lỗi khi lấy danh sách ticket: " + err));
+    }).catch(err => this.message.error("Lỗi khi lấy danh sách ticket: "));
   }
 
   createAssignTicketsForUsers(form: NgForm) {

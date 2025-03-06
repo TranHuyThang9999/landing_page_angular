@@ -3,6 +3,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { ProfileComponent } from "../profile/profile.component";
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { CreateTicketComponent } from '../components/create-ticket/create-ticket.component';
+import { UserListComponent } from "../user-list/user-list.component";
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,6 +12,7 @@ import { CreateTicketComponent } from '../components/create-ticket/create-ticket
     ProfileComponent,
     NzLayoutModule,
     CreateTicketComponent,
+    UserListComponent
 ],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css'

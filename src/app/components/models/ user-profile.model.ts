@@ -11,3 +11,8 @@ export interface ResponseData {
   data: UserProfile;
 }
 
+export interface ResponseListUser {
+  code: number;
+  message: string;
+  data: UserProfile[];
+}

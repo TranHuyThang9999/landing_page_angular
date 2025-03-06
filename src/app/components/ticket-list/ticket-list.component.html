@@ -1,7 +1,5 @@
 <div class="container">
   <app-create-ticket (ticketCreated)="onTicketCreated()"></app-create-ticket>
-  <h1>Danh sách người bạn có thế assagin</h1>
-  <app-user-list></app-user-list>
   <div class="mt-4">
     <table class="table table-striped table-hover table-bordered text-center">
       <thead class="table-dark">
@@ -25,15 +23,6 @@
     </table>
 
     <div class="d-flex justify-content-between align-items-center mt-3">
-      <div>
-        <span class="me-2">Total {{ tickets.length }} items</span>
-        <nz-select [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChange()">
-          <nz-option [nzValue]="5" nzLabel="5 / page"></nz-option>
-          <nz-option [nzValue]="10" nzLabel="10 / page"></nz-option>
-          <nz-option [nzValue]="20" nzLabel="20 / page"></nz-option>
-        </nz-select>
-      </div>
-
       <nz-pagination [nzPageIndex]="currentPage" [nzTotal]="tickets.length" [nzPageSize]="pageSize"
         (nzPageIndexChange)="onPageIndexChange($event)"></nz-pagination>
     </div>

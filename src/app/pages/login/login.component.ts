@@ -43,7 +43,7 @@ export class LoginComponent {
       if (response.code === 0) {
         localStorage.setItem('token', response.data);
         this.message.success("Đăng nhập thành công!");
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/dashboard']);
       }
     } catch (error: any) {
       const code = error.data?.code ?? error.code;

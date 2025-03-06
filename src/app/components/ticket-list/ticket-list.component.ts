@@ -25,7 +25,7 @@ export class TicketListComponent implements OnInit {
   displayedTickets: Ticket[] = [];
   
   currentPage = 1;
-  pageSize = 5; // Fix số bản ghi mỗi trang là 5
+  pageSize = 5;
   
   constructor(private ticketService: TicketService) { }
   

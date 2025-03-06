@@ -7,6 +7,7 @@ import { Ticket } from '../models/ticket';
 import { CommonModule } from '@angular/common';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { UserProfile } from '../models/ user-profile.model';
+import { NzConfigService } from 'ng-zorro-antd/core/config';
 
 @Component({
   selector: 'app-ticket-assignment',
@@ -28,13 +29,17 @@ export class TicketAssignmentComponent implements OnInit {
     private usersService: UsersService,
     private ticketService: TicketService,
     private apiService: FetchApiInstanceService,
-    private message: NzMessageService
-  ) { }
-
+    private message: NzMessageService, 
+    private nzConfigService: NzConfigService
+  ) { 
+    this.nzConfigService.set('message', { nzTop: 100 });
+  }
+  
+  
   ngOnInit(): void {
     this.usersService.getUsers().then(users => {
       this.users = users;
-    }).catch(err => this.message.error("Lỗi khi lấy danh sách người dùng: " + err));
+    }).catch(err => this.message.error("Lỗi khi lấy danh sách người dùng: " ));
 
     this.ticketService.getTickets().then(tickets => {
       this.tickets = tickets;

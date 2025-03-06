@@ -1,4 +1,4 @@
-<nz-layout>
+<nz-layout *ngIf="isLoaded; else loadingTemplate">
     <nz-header class="bg-primary text-white py-3">
         <h3 class="text-center">Admin Dashboard</h3>
     </nz-header>
@@ -9,7 +9,6 @@
                 <div class="col-md-12 h-100">
                     <nz-tabset [nzTabPosition]="'left'" [nzType]="'line'" [nzSize]="'large'" class="h-100"
                         [nzAnimated]="false">
-
                         <nz-tab nzTitle="Quản lý Ticket Assagin">
                             <app-ticket-assignment/>
                         </nz-tab>
@@ -24,7 +23,7 @@
                             <app-user-list />
                         </nz-tab>
                         <nz-tab nzTitle="Ticket Được Giao Cho Tôi">
-                           <app-tickets-assigned-to-me/>
+                            <app-tickets-assigned-to-me/>
                         </nz-tab>
                         <nz-tab nzTitle="Ticket đã giao cho người khác">
                         </nz-tab>
@@ -34,3 +33,10 @@
         </div>
     </nz-content>
 </nz-layout>
+
+<!-- Template hiển thị loading -->
+<ng-template #loadingTemplate>
+    <div class="loading-container">
+        <nz-spin nzTip="Đang tải dữ liệu..." nzSize="large"></nz-spin>
+    </div>
+</ng-template>

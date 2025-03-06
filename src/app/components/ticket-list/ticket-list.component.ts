@@ -7,13 +7,8 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { CreateTicketComponent } from "../create-ticket/create-ticket.component";
 import { UserListComponent } from "../../user-list/user-list.component";
+import { Ticket } from '../models/ticket';
 
-export interface Ticket {
-  id: number;
-  name: string;
-  fileDescription: string;
-  description:string;
-}
 
 @Component({
   selector: 'app-ticket-list',

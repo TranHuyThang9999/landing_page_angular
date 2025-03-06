@@ -6,6 +6,7 @@ import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { CreateTicketComponent } from "../create-ticket/create-ticket.component";
+import { UserListComponent } from "../../user-list/user-list.component";
 
 export interface Ticket {
   id: number;
@@ -23,8 +24,9 @@ export interface Ticket {
     NzImageModule,
     NzPaginationModule,
     NzSelectModule,
-    CreateTicketComponent
-  ],
+    CreateTicketComponent,
+    UserListComponent
+],
   templateUrl: './ticket-list.component.html',
   styleUrls: ['./ticket-list.component.css']
 })

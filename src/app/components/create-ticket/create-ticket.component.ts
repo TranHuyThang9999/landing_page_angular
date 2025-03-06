@@ -24,7 +24,8 @@ import { FetchApiInstanceService } from '../../utils/fetch_api.service';
 export class CreateTicketComponent {
   ticket = {
     name: '',
-    fileDescription: ''
+    fileDescription: '',
+    description: ''
   };
 
   @Output() ticketCreated = new EventEmitter<any>(); 
@@ -59,7 +60,8 @@ export class CreateTicketComponent {
     try {
       const response = await this.apiService.post<{ data: string, message: string, code: number }>('ticket/create', {
         name: this.ticket.name,
-        fileDescription: this.ticket.fileDescription
+        fileDescription: this.ticket.fileDescription,
+        description:this.ticket.description
       });
 
       if (response.code === 0) {

@@ -11,6 +11,7 @@ export interface Ticket {
   id: number;
   name: string;
   fileDescription: string;
+  description:string;
 }
 
 @Component({
@@ -31,7 +32,6 @@ export class TicketListComponent implements OnInit {
   tickets: Ticket[] = [];
   displayedTickets: Ticket[] = [];
   
-  // Pagination properties
   currentPage = 1;
   pageSize = 10;
   

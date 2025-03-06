@@ -14,7 +14,7 @@ import { ResponseListUser, UserProfile } from '../components/models/ user-profil
   styleUrl: './user-list.component.css'
 })
 export class UserListComponent implements OnInit {
-  userProfile: UserProfile[] | null = null;
+  users: UserProfile[] | null = null;
 
   constructor(
     private apiService: FetchApiInstanceService,
@@ -28,7 +28,7 @@ export class UserListComponent implements OnInit {
       try {
         const response: ResponseListUser = await this.apiService.get('user/public/users');
         if (response.code === 0) {
-          this.userProfile = response.data;
+          this.users = response.data;
         }
       } catch (error) {
         console.error("Lỗi khi lấy dữ liệu người dùng:", error);

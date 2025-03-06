@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit {
 
    async getData() {
       try {
-        const response: ResponseListUser = await this.apiService.get('user/public/user');
+        const response: ResponseListUser = await this.apiService.get('user/public/users');
         if (response.code === 0) {
           this.userProfile = response.data;
         }

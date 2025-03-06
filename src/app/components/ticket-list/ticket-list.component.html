@@ -1,4 +1,7 @@
-<table class="table table-striped table-hover table-bordered text-center">
+<div class="container">
+  <app-create-ticket (ticketCreated)="onTicketCreated()"></app-create-ticket>
+
+  <table class="table table-striped table-hover table-bordered text-center mt-4">
     <thead class="table-dark">
       <tr>
         <th>ID</th>
@@ -15,4 +18,5 @@
         </td>
       </tr>
     </tbody>
-</table>
+  </table>
+</div>

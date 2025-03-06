@@ -1,18 +1,34 @@
-<form #form="ngForm" (ngSubmit)="createTicket(form)">
+<button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#createTicketModal">
+  Tạo Ticket
+</button>
 
-  <div class="mb-3">
-    <label class="form-label fw-bold">Tên Ticket</label>
-    <input type="text" class="form-control" [(ngModel)]="ticket.name" name="name" required>
+<!-- Modal Bootstrap 5 -->
+<div class="modal fade" id="createTicketModal" tabindex="-1" aria-labelledby="createTicketModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="createTicketModalLabel">Tạo Ticket Mới</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Form tạo ticket -->
+        <form #form="ngForm" (ngSubmit)="createTicket(form)">
+          <div class="mb-3">
+            <label class="form-label fw-bold">Tên Ticket</label>
+            <input type="text" class="form-control" [(ngModel)]="ticket.name" name="name" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-bold">Ảnh đại diện</label>
+            <app-file-upload [maxFileCount]="2" (uploadComplete)="onFileUploadComplete($event)">
+            </app-file-upload>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 shadow-sm rounded-pill">
+            Tạo ticket
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
-
-  <div class="mb-3">
-    <label class="form-label fw-bold">Ảnh đại diện</label>
-    <app-file-upload [maxFileCount]="2" (uploadComplete)="onFileUploadComplete($event)">
-    </app-file-upload>
-  </div>
-
-
-  <button type="submit" class="btn btn-primary w-100 shadow-sm rounded-pill">
-    Tạo ticket
-  </button>
-</form>
+</div>

@@ -7,10 +7,13 @@ import { TicketListComponent } from "../components/ticket-list/ticket-list.compo
 import { TicketAssignmentComponent } from "../components/ticket-assignment/ticket-assignment.component";
 import { TicketsAssignedToMeComponent } from "../components/tickets-assigned-to-me/tickets-assigned-to-me.component";
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { TicketsAssignedByMeComponent } from "../components/tickets-assigned-by-me/tickets-assigned-by-me.component";
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
   imports: [
+    CommonModule,
     NzTabsModule,
     ProfileComponent,
     NzLayoutModule,
@@ -18,7 +21,8 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     TicketListComponent,
     TicketAssignmentComponent,
     TicketsAssignedToMeComponent,
-    NzSpinModule
+    NzSpinModule,
+    TicketsAssignedByMeComponent
 ],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css'

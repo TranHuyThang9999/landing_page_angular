@@ -5,3 +5,11 @@ export interface ReceivedAssignedTicketDTO {
     fileDescription: string;
     description: string;
 }
+
+export interface TicketAssignedByMe {
+    id: number;
+    assigneeId: number;
+    name: string;
+    fileDescription: string;
+    description: string;
+  }

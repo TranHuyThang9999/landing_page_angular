@@ -59,7 +59,6 @@ export class TicketListComponent implements OnInit {
     this.loadTickets();
   }
   
-  // Pagination methods
   updateDisplayedTickets() {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;

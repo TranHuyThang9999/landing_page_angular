@@ -12,7 +12,6 @@ import { TicketListComponent } from "../components/ticket-list/ticket-list.compo
     NzTabsModule,
     ProfileComponent,
     NzLayoutModule,
-    CreateTicketComponent,
     UserListComponent,
     TicketListComponent
 ],

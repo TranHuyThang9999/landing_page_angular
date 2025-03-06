@@ -8,6 +8,7 @@ import { TicketListComponent } from "../components/ticket-list/ticket-list.compo
 
 @Component({
   selector: 'app-admin-dashboard',
+  standalone: true,
   imports: [
     NzTabsModule,
     ProfileComponent,

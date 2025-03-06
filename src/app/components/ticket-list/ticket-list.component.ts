@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchApiInstanceService } from '../../utils/fetch_api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NzImageModule } from 'ng-zorro-antd/image';
 
 export interface Ticket {
   id: number;
@@ -14,6 +15,7 @@ export interface Ticket {
   imports: [
     CommonModule,
     FormsModule,
+    NzImageModule
   ],
   templateUrl: './ticket-list.component.html',
   styleUrls: ['./ticket-list.component.css']

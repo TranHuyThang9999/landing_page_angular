@@ -6,6 +6,7 @@ import { CreateTicketComponent } from '../components/create-ticket/create-ticket
 import { UserListComponent } from "../user-list/user-list.component";
 import { TicketListComponent } from "../components/ticket-list/ticket-list.component";
 import { TicketAssignmentComponent } from "../components/ticket-assignment/ticket-assignment.component";
+import { TicketsAssignedToMeComponent } from "../components/tickets-assigned-to-me/tickets-assigned-to-me.component";
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -16,7 +17,8 @@ import { TicketAssignmentComponent } from "../components/ticket-assignment/ticke
     NzLayoutModule,
     UserListComponent,
     TicketListComponent,
-    TicketAssignmentComponent
+    TicketAssignmentComponent,
+    TicketsAssignedToMeComponent
 ],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css'

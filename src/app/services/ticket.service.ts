@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { FetchApiInstanceService } from '../utils/fetch_api.service';
-import { ResponseListUser, UserProfile } from '../components/models/ user-profile.model';
 import { Ticket } from '../components/models/ticket';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TicketService {
   constructor(private apiService: FetchApiInstanceService) {}  
 

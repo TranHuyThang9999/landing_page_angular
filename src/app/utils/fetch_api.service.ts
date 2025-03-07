@@ -37,7 +37,8 @@ export class FetchApiInstanceService {
 
             if (response.status === 401) {
                 localStorage.removeItem('token');
-                this.router.navigate(['/']);
+                localStorage.removeItem('userProfile');
+                window.location.href = '/login';
             }
 
             throw {

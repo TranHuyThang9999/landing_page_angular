@@ -12,4 +12,5 @@ export interface TicketAssignedByMe {
     name: string;
     fileDescription: string;
     description: string;
+    createdAt: string;
   }

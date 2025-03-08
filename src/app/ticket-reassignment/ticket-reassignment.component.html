@@ -1,39 +1,55 @@
 <div class="container mt-4">
-    <h2 class="text-center mb-4">Gán Ticket Cho Người Dùng</h2>
+    <!-- Nút mở modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assignTicketModal">
+        Assign lại cho người khác
+    </button>
 
-    <form #assignForm="ngForm" (ngSubmit)="reassignTickets()">
-        <div class="row">
-            <!-- Danh sách ticket -->
-            <!-- Danh sách ticket -->
-            <div class="col-md-6">
-                <h4 class="mb-3">Chọn Tickets</h4>
-                <div class="list-group">
-                    <label class="list-group-item" *ngFor="let ticket of tickets">
-                        <input type="checkbox" (change)="toggleTicketSelection(ticket.assignedTicketId)"
-                            [checked]="selectedTicketIds.includes(ticket.assignedTicketId)"
-                            class="form-check-input me-2">
-                        {{ ticket.name }}
-                    </label>
+    <!-- Modal -->
+    <div class="modal fade" id="assignTicketModal" tabindex="-1" aria-labelledby="assignTicketModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">  <!-- modal-lg để tăng kích thước -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="assignTicketModalLabel">Gán Ticket Cho Người Dùng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
 
+                <div class="modal-body">
+                    <form #assignForm="ngForm" (ngSubmit)="reassignTickets()">
+                        <div class="row">
+                            <!-- Danh sách ticket -->
+                            <div class="col-md-6">
+                                <h4 class="mb-3">Chọn Tickets</h4>
+                                <div class="list-group">
+                                    <label class="list-group-item" *ngFor="let ticket of tickets">
+                                        <input type="checkbox" (change)="toggleTicketSelection(ticket.assignedTicketId)"
+                                            [checked]="selectedTicketIds.includes(ticket.assignedTicketId)"
+                                            class="form-check-input me-2">
+                                        {{ ticket.name }}
+                                    </label>
+                                </div>
+                            </div>
 
-            <!-- Danh sách người dùng -->
-            <div class="col-md-6">
-                <h4 class="mb-3">Chọn Người Dùng</h4>
-                <div class="list-group">
-                    <label class="list-group-item" *ngFor="let user of users">
-                        <input type="checkbox" (change)="toggleAssigneeSelection(user.id)"
-                            [checked]="selectedAssigneeIds.includes(user.id)" class="form-check-input me-2">
-                        {{ user.name }} ({{ user.email }})
-                    </label>
+                            <!-- Danh sách người dùng -->
+                            <div class="col-md-6">
+                                <h4 class="mb-3">Chọn Người Dùng</h4>
+                                <div class="list-group">
+                                    <label class="list-group-item" *ngFor="let user of users">
+                                        <input type="checkbox" (change)="toggleAssigneeSelection(user.id)"
+                                            [checked]="selectedAssigneeIds.includes(user.id)" class="form-check-input me-2">
+                                        {{ user.name }} ({{ user.email }})
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nút gửi -->
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary">Gán Ticket</button>
+                        </div>
+                    </form>
                 </div>
+
             </div>
         </div>
-
-        <!-- Nút gửi -->
-        <div class="text-center mt-4">
-            <button type="submit" class="btn btn-primary">Gán Ticket</button>
-        </div>
-    </form>
+    </div>
 </div>

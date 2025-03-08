@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { UserProfile } from '../models/ user-profile.model';
 import { NzConfigService } from 'ng-zorro-antd/core/config';
+import { Subject } from 'rxjs';
+import { TicketEventService } from '../../services/ticket_assigned_event.service';
 
 @Component({
   selector: 'app-ticket-assignment',
@@ -30,7 +32,8 @@ export class TicketAssignmentComponent implements OnInit {
     private ticketService: TicketService,
     private apiService: FetchApiInstanceService,
     private message: NzMessageService, 
-    private nzConfigService: NzConfigService
+    private nzConfigService: NzConfigService,
+    private ticketEventService: TicketEventService,
   ) { 
     this.nzConfigService.set('message', { nzTop: 100 });
   }
@@ -64,12 +67,14 @@ export class TicketAssignmentComponent implements OnInit {
           this.selectedTicketIds = [];
           this.selectedAssigneeIds = [];
           form.resetForm();
+
+          this.ticketEventService.notifyTicketAssigned();
+
         } else {
-          this.message.error(response.message || 'Có lỗi xảy ra!');
+          this.message.error('Có lỗi xảy ra!');
         }
       })
       .catch(error => {
-        console.error('Lỗi khi gửi yêu cầu', error);
         this.message.error('Lỗi khi gán ticket!');
       });
   }

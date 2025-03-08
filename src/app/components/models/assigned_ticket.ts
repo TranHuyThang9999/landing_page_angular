@@ -1,4 +1,5 @@
 export interface ReceivedAssignedTicketDTO {
+    assignedTicketId: number;
     ticketId: number;
     assignerId: number;
     name: string;
@@ -13,5 +14,4 @@ export interface TicketAssignedByMe {
     fileDescription: string;
     description: string;
     createdAt: string;
-  }
-
+}

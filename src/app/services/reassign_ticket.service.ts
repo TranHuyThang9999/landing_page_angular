@@ -14,7 +14,10 @@ export class ReassignTicketService {
 
     async reassignTicket(command: ReassignTicket): Promise<boolean> {
         try {
-            const response = await this.apiService.post<{ data: string, message: string, code: number }>('/assignTickets/reassignTicket', command);
+            const response = await this.apiService.post<{
+                message: string, code: number
+            }>
+                ('assignTickets/reassignTicket', command);
             return response.code === 0;
         } catch (error: any) {
             console.error('Failed to reassign tickets:', error.message || error);

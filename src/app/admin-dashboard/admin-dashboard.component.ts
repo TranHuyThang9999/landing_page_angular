@@ -9,6 +9,7 @@ import { TicketsAssignedToMeComponent } from "../components/tickets-assigned-to-
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { TicketsAssignedByMeComponent } from "../components/tickets-assigned-by-me/tickets-assigned-by-me.component";
 import { CommonModule } from '@angular/common';
+import { TicketReassignmentComponent } from "../ticket-reassignment/ticket-reassignment.component";
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
@@ -22,7 +23,8 @@ import { CommonModule } from '@angular/common';
     TicketAssignmentComponent,
     TicketsAssignedToMeComponent,
     NzSpinModule,
-    TicketsAssignedByMeComponent
+    TicketsAssignedByMeComponent,
+    TicketReassignmentComponent
 ],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css'
@@ -32,6 +34,6 @@ export class AdminDashboardComponent {
   ngOnInit() {
     setTimeout(() => {
       this.isLoaded = true;
-    }, 2000);
+    }, 1000);
   }
 }

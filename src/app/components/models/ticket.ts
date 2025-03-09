@@ -3,6 +3,12 @@ export interface Ticket {
   name: string;
   fileDescription: string;
   description: string;
+  assigneeId: number;
+  assigneeName: string;
+  assignerId: number;
+  assignerName: string;
+  status: number;
+  assignedAt: string;
 }
 
 
@@ -11,3 +17,4 @@ export interface ApiResponse<T> {
   message: string;
   data: T;
 }
+

@@ -55,5 +55,4 @@ export class TicketListComponent implements OnInit {
     this.updateDisplayedTickets();
   }
   
-  // Không cần onPageSizeChange() vì pageSize cố định
 }

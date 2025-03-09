@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { UserProfile } from '../models/ user-profile.model';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -13,20 +14,19 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   userProfile: UserProfile | null = null;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
-    const storedUser = localStorage.getItem('userProfile');
-    if (storedUser) {
-      this.userProfile = JSON.parse(storedUser);
-    }
+    this.authService.userProfile$.subscribe(user => {
+      this.userProfile = user;
+    });
   }
 
   logout() {
-    localStorage.removeItem('userProfile');
-    localStorage.removeItem('token');
-    this.userProfile = null;
-    window.location.href = '/login';
+    this.authService.logout();
   }
 
   goToProfile() {
@@ -34,4 +34,5 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/dashboard']);
     }
   }
+  
 }

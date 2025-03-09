@@ -1,44 +1,40 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
-      <div class="container">
-        <a class="navbar-brand text-warning fw-bold" routerLink="/">
-          @if (userProfile) {
-            {{ userProfile.name }}
-          } @else {
-            Website
-          }
-          @if (userProfile?.avatarUrl) {
-            <img [src]="userProfile?.avatarUrl" alt="Avatar"
-                 class="rounded-circle ms-2" width="35"
-                 (click)="goToProfile()" style="cursor: pointer;">
-          }
-        </a>
-  
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Mở menu">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-  
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link text-white" routerLink="/about" routerLinkActive="active">Giới thiệu</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" routerLink="/contact" routerLinkActive="active">Liên hệ</a>
-            </li>
-          </ul>
-  
-          <div class="ms-lg-3">
-            @if (userProfile) {
-              <button class="btn btn-outline-light" (click)="logout()">Đăng xuất</button>
-            } @else {
-              <a class="btn btn-light me-2" href="/login">Đăng nhập</a>
-              <a class="btn btn-warning" href="/register">Đăng ký</a>
-            }
-          </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
+    <div class="container">
+      <a class="navbar-brand text-warning fw-bold" routerLink="/">
+        <span *ngIf="userProfile; else defaultText" (click)="goToProfile()" style="cursor: pointer;">
+          {{ userProfile.name }}
+        </span>
+        <ng-template #defaultText>Website</ng-template>
+
+        <img *ngIf="userProfile?.avatarUrl" [src]="userProfile?.avatarUrl" 
+             alt="Avatar" class="rounded-circle ms-2" width="35"
+             (click)="goToProfile()" style="cursor: pointer;">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Mở menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/about" routerLinkActive="active">Giới thiệu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/contact" routerLinkActive="active">Liên hệ</a>
+          </li>
+        </ul>
+
+        <div class="ms-lg-3">
+          <button *ngIf="userProfile; else loginButtons" class="btn btn-outline-light" (click)="logout()">Đăng xuất</button>
+          <ng-template #loginButtons>
+            <a class="btn btn-light me-2" href="/login">Đăng nhập</a>
+            <a class="btn btn-warning" href="/register">Đăng ký</a>
+          </ng-template>
         </div>
       </div>
-    </nav>
-  </header>
-  
+    </div>
+  </nav>
+</header>

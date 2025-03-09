@@ -4,6 +4,8 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { FetchApiInstanceService } from '../../utils/fetch_api.service';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { ResponseData } from '../../components/models/ user-profile.model';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +25,7 @@ export class LoginComponent {
     private apiService: FetchApiInstanceService,
     private message: NzMessageService,
     private router: Router,
+    private authService: AuthService
   ) { }
 
   
@@ -42,6 +45,11 @@ export class LoginComponent {
 
       if (response.code === 0) {
         localStorage.setItem('token', response.data);
+
+        const profileResponse = await this.apiService.get<ResponseData>('user/profile');
+        if (profileResponse.code === 0) {
+          this.authService.setUser(profileResponse.data);
+        }
         this.message.success("Đăng nhập thành công!");
         this.router.navigate(['/dashboard']);
       }

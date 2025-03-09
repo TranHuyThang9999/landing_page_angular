@@ -10,6 +10,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { TicketsAssignedByMeComponent } from "../components/tickets-assigned-by-me/tickets-assigned-by-me.component";
 import { CommonModule } from '@angular/common';
 import { TicketReassignmentComponent } from "../ticket-reassignment/ticket-reassignment.component";
+import { TicketSearchComponent } from "../components/ticket-search/ticket-search.component";
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
@@ -24,7 +25,8 @@ import { TicketReassignmentComponent } from "../ticket-reassignment/ticket-reass
     TicketsAssignedToMeComponent,
     NzSpinModule,
     TicketsAssignedByMeComponent,
-    TicketReassignmentComponent
+    TicketReassignmentComponent,
+    TicketSearchComponent
 ],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css'

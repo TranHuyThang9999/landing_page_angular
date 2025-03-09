@@ -9,6 +9,8 @@ export interface Ticket {
   assignerName: string;
   status: number;
   assignedAt: string;
+  firstAssginId: number;
+  firstAssginName: string;
 }
 
 

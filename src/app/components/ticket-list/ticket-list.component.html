@@ -8,6 +8,7 @@
           <th>Tên</th>
           <th>Mô tả</th>
           <th>Thời gian assign</th>
+          <th>Người assign được đầu tiên </th>
           <th>Người assign trước đó</th>
           <th>Người assign cuối cùng hiện tại</th>
           <th>Ảnh mô tả</th>
@@ -21,6 +22,7 @@
           <td [ngClass]="{'text-warning': !ticket.assignedAt}">
             {{ ticket.assignedAt ? (ticket.assignedAt | date: 'yyyy-MM-dd HH:mm:ss') : 'Ticket chưa assign ai' }}
           </td>
+          <td>{{ ticket.firstAssginName }}</td>
           <td>{{ ticket.assignerName }}</td>
           <td>{{ ticket.assigneeName }}</td>
           <td>
